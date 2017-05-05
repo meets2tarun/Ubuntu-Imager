@@ -1,0 +1,19 @@
+# This provides us with GCC binary support so we can run bash
+language: generic
+
+sudo: required
+
+script:
+  - ./distroshare-ubuntu-imager.sh
+  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then bash ./scripts/aptRepoUpdater.sh; fi'
+
+before_deploy:
+  - export image_name="`echo *.iso`"
+  - cat *.iso > "/home/travis/${image_name}"
+
+
+deploy:
+  - provider: releases
+    skip_cleanup: true
+    on:
+      branch: master
