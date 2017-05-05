@@ -5,8 +5,7 @@ sudo: required
 
 script:
   - ./distroshare-ubuntu-imager.sh
-  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then bash ./scripts/aptRepoUpdater.sh; fi'
-
+  
 before_deploy:
   - export image_name="`echo *.iso`"
   - cat *.iso > "/home/travis/${image_name}"
