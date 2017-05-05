@@ -4,7 +4,7 @@ language: generic
 sudo: required
 
 script:
-  - ./distroshare-ubuntu-imager.sh
+  -sudo ./distroshare-ubuntu-imager.sh
   
 before_deploy:
   - export image_name="`echo *.iso`"
